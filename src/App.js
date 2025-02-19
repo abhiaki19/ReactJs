@@ -1,5 +1,3 @@
-import logo from './logo.svg';
-import './App.css';
 import Employee from './components/Employee';
 import Databinding from './components/Databinding';
 import Eventbinding from './components/Eventbinding';
@@ -12,6 +10,7 @@ function App() {
   return (
     <div className="App">
        <h1>Welcome to React js Application</h1>
+
        {/* <Employee />
        <Databinding></Databinding> 
 
@@ -23,6 +22,7 @@ function App() {
        <UseStateArray/>
 
        {/* <ConditionRender /> */}
+       
     </div>
   );
 }
