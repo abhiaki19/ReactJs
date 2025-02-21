@@ -4,9 +4,11 @@ import Header from "./Header";
 
 function Layout() {
     return (
-      <div className="App">
-         <Header /> 
-         <Outlet /> 
+        <div class="min-h-full flex flex-col h-screen justify-between">
+            <Header /> 
+            <main class="mb-20  mb-auto h-10"> 
+                <Outlet /> 
+            </main>
          <Footer /> 
 
       </div>
