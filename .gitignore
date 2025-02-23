@@ -1,26 +1,13 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
 
-# dependencies
-/node_modules 
-/components
-/.pnp
-.pnp.js
-
-# testing
-/coverage
-
-# production
-/build
-
-# misc
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+/Backend/ReactJs.API/bin/Debug/net8.0
 /.vs/ReactJs/FileContentIndex
 /.vs/slnx.sqlite
+/Backend/ReactJs.API/obj
+/Backend/ReactJs.Core/bin/Debug/net8.0
+/Backend/ReactJs.Core/obj
+/Backend/ReactJs.Infrastructure/bin/Debug/net8.0
+/Backend/ReactJs.Infrastructure/Migrations
+/Backend/ReactJs.Infrastructure/obj
