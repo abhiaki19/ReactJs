@@ -11,3 +11,9 @@
 /Backend/ReactJs.Infrastructure/bin/Debug/net8.0
 /Backend/ReactJs.Infrastructure/Migrations
 /Backend/ReactJs.Infrastructure/obj
+Backend/.vs/ReactJsApi/config/applicationhost.config
+/Frontend/.vs
+/Frontend/.vs/Frontend/FileContentIndex
+/Frontend/.vs/Frontend/FileContentIndex/d7342570-9b0b-4413-8d5a-100a9406eeb2.vsidx
+/Frontend/.vs/slnx.sqlite
+/Backend/.vs/ReactJsApi
