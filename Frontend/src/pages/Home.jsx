@@ -201,8 +201,8 @@ function Home() {
             </form>
             </div>
 
-            <div className="mt-10 relative overflow-x-auto">
-                    <button type="button" onClick={(e) => setShowForm(true)} className=" float-right px-3 py-2 text-xs font-medium text-center inline-flex items-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add New Employee</button>
+            <div className="relative overflow-x-auto">
+                    <button type="button" onClick={(e) => setShowForm(true)}  className={showForm ? 'hidden':'float-right px-3 py-2 text-xs font-medium text-center inline-flex items-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'}>Add New Employee</button>
                 <h2 className="mb-10 text-2xl tracking-tight text-gray-900">Employee List
 </h2>
                 
