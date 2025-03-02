@@ -11,8 +11,8 @@ function EmployeeService() {
     return {
         fetchAll: () => Api(apiUrl).fetchAll(),
         fetchById: id => Api(apiUrl).fetchById(id),
-        create: newRecord => Api(apiUrl).create(newRecord),
-        update: (updateRecord) => Api(apiUrl).update(updateRecord),
+        create: newRecord => Api(apiUrl).post(newRecord),
+        update: (updateRecord) => Api(apiUrl).put(updateRecord),
         delete: id => Api(apiUrl).delete(id)
     }
 } 

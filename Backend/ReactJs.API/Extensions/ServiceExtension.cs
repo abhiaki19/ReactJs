@@ -11,6 +11,7 @@ namespace ReactJs.API.Extensions
         {
             #region Services
             services.AddScoped<IEmployeeService, EmployeeService>();
+            services.AddScoped<ILoginService, LoginService>();
             #endregion
 
             #region Repositories

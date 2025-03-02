@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
-
+import {useContext } from 'react'
+import { AuthContext } from '../context/AuthProvider';
 
 export default function Header() {
+const {user} = useContext(AuthContext);
 
   return (
     <header className="bg-white">
@@ -28,9 +30,12 @@ export default function Header() {
           </Link>
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="#" className="text-sm/6 font-semibold text-gray-900">
+          <Link to="login" className={ (user!=null? 'hidden': 'text-sm/6 font-semibold text-gray-900 ')}>
             Log in <span aria-hidden="true">&rarr;</span>
-          </a>
+          </Link>
+          <span  className={ (user!=null?  'text-sm/6 font-semibold text-gray-900 ':'hidden')}>
+           {user?.['username']}
+          </span>
         </div>
       </nav> 
     </header>
