@@ -17,3 +17,4 @@ Backend/.vs/ReactJsApi/config/applicationhost.config
 /Frontend/.vs/Frontend/FileContentIndex/d7342570-9b0b-4413-8d5a-100a9406eeb2.vsidx
 /Frontend/.vs/slnx.sqlite
 /Backend/.vs/ReactJsApi
+node_modules
