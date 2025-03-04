@@ -25,7 +25,7 @@ const {user} = useContext(AuthContext);
           <Link to="/about" className="text-sm/6 font-semibold text-gray-900">
             About
           </Link>
-          <Link to="/" className="text-sm/6 font-semibold text-gray-900">
+          <Link to="/contact" className="text-sm/6 font-semibold text-gray-900">
             Contact Us
           </Link>
         </div>

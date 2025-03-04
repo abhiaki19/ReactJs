@@ -7,6 +7,7 @@ import Layout from './layout/Layout';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import About from './pages/About';
+import ContactUs from './pages/ContactUs';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -26,7 +27,8 @@ const route = createBrowserRouter ([{path: '/', element: <Layout />,
             {path: 'home', element: <Home />},
             {path: '', element: <Home />},
             {path: 'login', element: <Login />},
-            {path: 'about', element: <About />}
+            {path: 'about', element: <About />},
+            {path: 'contact', element: <ContactUs />}
           ]
 }]);
 

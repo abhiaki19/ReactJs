@@ -45,7 +45,7 @@ function Home() {
                         clear();
                     }
                 }
-            }, err => console.log(err.response.data.error.message));
+            }, err => {alert(err.response.data.error.message); console.log(err.response.data.error.message)});
         } else {
             EmployeeService().create(employee).then(res => {
                 if (res.status === 200 && res.data != null) {
@@ -55,7 +55,7 @@ function Home() {
                         clear();
                     }
                 }
-            }, err => console.log(err.response.data.error.message));
+            }, err => {alert(err.response.data.error.message); console.log(err.response.data.error.message)});
         }
     }
 
@@ -108,7 +108,7 @@ function Home() {
                             <div className="sm:col-span-3">
                                 <label htmlFor="first-name" className="block text-sm/6 font-medium text-gray-900">First name</label>
                                 <div className="mt-2">
-                                    <input type="text"
+                                    <input type="text" required
                                         value={firstName}
                                         onChange={(e) => setFirstName(e.target.value)}
                                         name="first-name"
@@ -123,7 +123,7 @@ function Home() {
                                     Last name
                                 </label>
                                 <div className="mt-2">
-                                    <input
+                                    <input required
                                         id="lastname"
                                         name="lastname"
                                         type="text"
@@ -139,7 +139,7 @@ function Home() {
                                 <label htmlFor="Email" className="block text-sm/6 font-medium text-gray-900">Email</label>
                                 <div className="mt-2">
                                     <input type="text"
-                                        name="Email"
+                                        name="Email" required
                                         id="Email"
                                         autoComplete="Email"
                                         value={email}
@@ -154,7 +154,7 @@ function Home() {
                                 </label>
                                 <div className="mt-2">
                                     <input
-                                        id="Username"
+                                        id="Username" required
                                         name="Username"
                                         type="text"
                                         autoComplete="Username"
@@ -168,7 +168,7 @@ function Home() {
                                 <label htmlFor="password" className="block text-sm/6 font-medium text-gray-900">Password</label>
                                 <div className="mt-2">
                                     <input type="password"
-                                        name="password"
+                                        name="password" required
                                         id="password"
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
@@ -183,7 +183,7 @@ function Home() {
                                 <div className="mt-2">
                                     <input
                                         type="checkbox"
-                                        id="IsActive"
+                                        id="IsActive"  
                                         name="IsActive"
                                         checked={isActive}
                                         onChange={() => { setIsActive((prev) => !prev) }}
