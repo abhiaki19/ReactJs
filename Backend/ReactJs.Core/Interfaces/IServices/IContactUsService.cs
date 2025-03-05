@@ -1,0 +1,14 @@
+﻿using ReactJs.Core.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ReactJs.Core.Interfaces.IServices
+{
+    public interface IContactUsService : IBaseService<ContactUsResponse>
+    {
+        Task<ContactUsResponse> Create(ContactUsRequest model, CancellationToken cancellationToken);
+    }
+}

@@ -20,6 +20,8 @@ namespace ReactJs.Infrastructure.Context
         #region DbSet Section
         public DbSet<Employee> Employees { get; set; }
 
+        public DbSet<ContactUs> ContactUs { get; set; }
+
         #endregion
 
 

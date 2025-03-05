@@ -22,6 +22,9 @@ namespace ReactJs.API.Extensions
                 cfg.CreateMap<Employee, LoginResponce>();
                 cfg.CreateMap<LoginRequest, Employee>();
 
+                cfg.CreateMap<ContactUs, ContactUsResponse>();
+                cfg.CreateMap<ContactUsRequest, ContactUs>();
+
 
             }).CreateMapper());
 
@@ -31,6 +34,9 @@ namespace ReactJs.API.Extensions
 
             services.AddSingleton<IBaseMapper<Employee, LoginResponce>, BaseMapper<Employee, LoginResponce>>();
             services.AddSingleton<IBaseMapper<LoginRequest, Employee>, BaseMapper<LoginRequest, Employee>>();
+
+            services.AddSingleton<IBaseMapper<ContactUs, ContactUsResponse>, BaseMapper<ContactUs, ContactUsResponse>>();
+            services.AddSingleton<IBaseMapper<ContactUsRequest, ContactUs>, BaseMapper<ContactUsRequest, ContactUs>>();
 
             #endregion
 
