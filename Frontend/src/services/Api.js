@@ -4,6 +4,7 @@ const baseUrl = "https://localhost:7116/api/"
 
 
 function Api(apiName) { 
+    debugger
 return {
     
             fetchAll: () => axios.get(baseUrl + apiName),
