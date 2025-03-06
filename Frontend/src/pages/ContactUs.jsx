@@ -26,7 +26,7 @@ function ContactUs() {
                 if (res.status === 200 && res.data != null) {
                     alert(res.data.message);
                     if (res.data.success) { 
-                       // clear();
+                        clear();
                     }
                 }
         }, err => {alert(err.response.data.error.message); console.log(err.response.data.error.message)});
@@ -168,7 +168,7 @@ function ContactUs() {
                     <button
                     onClick={save}
                         className="shadow bg-indigo-600 hover:bg-indigo-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-6 rounded"
-                        type="submit">
+                        type="button">
                         Send Message
                     </button>
                 </div>
