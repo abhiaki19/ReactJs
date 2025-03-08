@@ -13,11 +13,15 @@ namespace ReactJs.API.Extensions
             services.AddScoped<IEmployeeService, EmployeeService>();
             services.AddScoped<ITeamService, TeamService>();
             services.AddScoped<ILoginService, LoginService>();
+
+            services.AddScoped<IContactUsService, ContactUsService>();
             #endregion
 
             #region Repositories
             services.AddTransient<IEmployeeRepository, EmployeeRepository>();
             services.AddTransient<ITeamRepository, TeamRepository>();
+
+            services.AddTransient<IContactUsRepository, ContactUsRepository>();
 
             #endregion
 

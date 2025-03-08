@@ -22,6 +22,8 @@ namespace ReactJs.Infrastructure.Context
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Team> Teams { get; set; }
 
+        public DbSet<ContactUs> ContactUs { get; set; }
+
         #endregion
 
 

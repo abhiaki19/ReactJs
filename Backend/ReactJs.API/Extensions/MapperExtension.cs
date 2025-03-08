@@ -22,8 +22,11 @@ namespace ReactJs.API.Extensions
                 cfg.CreateMap<Employee, LoginResponce>();
                 cfg.CreateMap<LoginRequest, Employee>();
 
+                cfg.CreateMap<ContactUs, ContactUsResponse>();
+                cfg.CreateMap<ContactUsRequest, ContactUs>();
                 cfg.CreateMap<Team, TeamResponce>();
                 cfg.CreateMap<TeamRequest, Team>();
+
 
             }).CreateMapper());
 
@@ -34,8 +37,9 @@ namespace ReactJs.API.Extensions
             services.AddSingleton<IBaseMapper<Employee, LoginResponce>, BaseMapper<Employee, LoginResponce>>();
             services.AddSingleton<IBaseMapper<LoginRequest, Employee>, BaseMapper<LoginRequest, Employee>>();
 
-            services.AddTransient<IBaseMapper<Team, TeamResponce>, BaseMapper<Team, TeamResponce>>();
-            services.AddTransient<IBaseMapper<TeamRequest, Team>, BaseMapper<TeamRequest, Team>>();
+            services.AddSingleton<IBaseMapper<ContactUs, ContactUsResponse>, BaseMapper<ContactUs, ContactUsResponse>>();
+            services.AddSingleton<IBaseMapper<ContactUsRequest, ContactUs>, BaseMapper<ContactUsRequest, ContactUs>>();
+
             #endregion
 
             return services;
