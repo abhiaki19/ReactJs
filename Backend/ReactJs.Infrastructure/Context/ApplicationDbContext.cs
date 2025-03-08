@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Migrations;
 using ReactJs.Core.Entities;
 using System;
 using System.Collections.Generic;
@@ -19,13 +20,14 @@ namespace ReactJs.Infrastructure.Context
 
         #region DbSet Section
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<Team> Teams { get; set; }
 
         #endregion
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(modelBuilder); 
             // get ApplyConfiguration method with reflection
             var applyGenericMethod = typeof(ModelBuilder).GetMethod("ApplyConfiguration", BindingFlags.Instance | BindingFlags.Public);
             // replace GetExecutingAssembly with assembly where your configurations are if necessary

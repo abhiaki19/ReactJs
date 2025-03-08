@@ -8,7 +8,9 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import About from './pages/About';
 import ContactUs from './pages/ContactUs';
-
+import Team from './pages/Team';
+import { Provider } from 'react-redux';
+import store from './store/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -28,6 +30,7 @@ const route = createBrowserRouter ([{path: '/', element: <Layout />,
             {path: '', element: <Home />},
             {path: 'login', element: <Login />},
             {path: 'about', element: <About />},
+            {path: 'team', element: <Team />},
             {path: 'contact', element: <ContactUs />}
           ]
 }]);
@@ -36,9 +39,9 @@ const route = createBrowserRouter ([{path: '/', element: <Layout />,
 root.render(
   <React.StrictMode>
     {/* <App /> */}
-
+    <Provider store={store}>
       <RouterProvider router={route} />
-
+</Provider>
 
 
   </React.StrictMode>

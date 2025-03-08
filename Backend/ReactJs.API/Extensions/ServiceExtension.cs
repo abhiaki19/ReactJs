@@ -11,11 +11,13 @@ namespace ReactJs.API.Extensions
         {
             #region Services
             services.AddScoped<IEmployeeService, EmployeeService>();
+            services.AddScoped<ITeamService, TeamService>();
             services.AddScoped<ILoginService, LoginService>();
             #endregion
 
             #region Repositories
             services.AddTransient<IEmployeeRepository, EmployeeRepository>();
+            services.AddTransient<ITeamRepository, TeamRepository>();
 
             #endregion
 
