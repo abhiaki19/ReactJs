@@ -1,6 +1,7 @@
 import axios from "axios"
+import config from "../conf/Config"
 
-const baseUrl = "https://localhost:7116/api/"
+const baseUrl = config.apiUrl;
 
 
 function Api(apiName) { 
