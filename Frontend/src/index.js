@@ -24,8 +24,10 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 
 
-const route = createBrowserRouter ([{path: '/', element: <Layout />,
-  children:[
+const route = createBrowserRouter ([
+  {
+    path: '/', element: <Layout />,
+    children:[
             {path: 'home', element: <Home />},
             {path: '', element: <Home />},
             {path: 'login', element: <Login />},
@@ -33,7 +35,8 @@ const route = createBrowserRouter ([{path: '/', element: <Layout />,
             {path: 'team', element: <Team />},
             {path: 'contact', element: <ContactUs />}
           ]
-}]);
+  }
+]);
 
 
 root.render(

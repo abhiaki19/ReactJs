@@ -89,5 +89,69 @@ namespace ReactJs.API.Controllers
         }
 
 
+        [HttpPost("loginjwt")]
+        public async Task<IActionResult> LoginJWT(LoginRequest model, CancellationToken cancellationToken)
+        {
+            if (ModelState.IsValid)
+            {
+                string message = "";
+
+
+                try
+                {
+
+                    var res = await _loginService.SignInAsync(model, cancellationToken);
+                    if (res != null)
+                    {
+                        var response = new ResponseModel<LoginResponce>
+                        {
+                            Success = true,
+                            Message = "employee login successfully",
+                            Data = res                            
+                        };
+                        return Ok(response); 
+                    }
+                    else
+                    {
+                        var response = new ResponseModel<LoginResponce>
+                        {
+                            Success = false,
+                            Message = "Username and Password are incorrect. please try again!" 
+                        };
+                        return Ok(response);
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, $"An error occurred while login employee");
+                    message = $"An error occurred while login employee- " + ex.Message;
+
+                    return StatusCode(StatusCodes.Status500InternalServerError, new ResponseModel<LoginRequest>
+                    {
+                        Success = false,
+                        Message = message,
+                        Error = new ErrorModel
+                        {
+                            Code = "ADD_ROLE_ERROR",
+                            Message = message
+                        }
+                    });
+                }
+            }
+
+            return StatusCode(StatusCodes.Status400BadRequest, new ResponseModel<EmployeeRequest>
+            {
+                Success = false,
+                Message = "Invalid input",
+                Error = new ErrorModel
+                {
+                    Code = "INPUT_VALIDATION_ERROR",
+                    Message = ModelStateHelper.GetErrors(ModelState)
+                }
+            });
+        }
+
+
     }
 }

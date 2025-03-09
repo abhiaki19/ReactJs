@@ -10,5 +10,7 @@ namespace ReactJs.Core.Interfaces.IServices
     public interface ILoginService : IBaseService<LoginResponse>
     {
         Task<LoginResponse> Login(LoginRequest model, CancellationToken cancellationToken);
+
+        Task<LoginResponce> SignInAsync(LoginRequest model, CancellationToken cancellationToken);
     }
 }

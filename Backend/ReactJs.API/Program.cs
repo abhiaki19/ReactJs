@@ -6,6 +6,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using ReactJs.Infrastructure.Context;
+using ReactJs.API.Authentication;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -41,6 +42,10 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.RegisterService();
 builder.Services.RegisterMapperService();
+
+builder.Services.AddJwtAuthentication();
+
+//builder.Services.AddSwagger();
 
 //Cors Policy
 // Configure CORS policy to allow requests from the client application
