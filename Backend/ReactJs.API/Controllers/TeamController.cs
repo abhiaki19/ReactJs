@@ -217,6 +217,7 @@ namespace ReactJs.API.Controllers
                 try
                 {
                     bool partialSave=false;
+                    var lst = await _TeamService.GetAll(cancellationToken);
                     foreach (var item in model)
                     {
                         item.Id = item.Id > 0 ? item.Id : 0;
@@ -245,7 +246,6 @@ namespace ReactJs.API.Controllers
                         }
                     }
                     // Delete object from database
-                    var lst = await _TeamService.GetAll(cancellationToken);
                     if (lst!=null&&lst.Count() > 0)
                     {
                         var result = lst?.Where(p => model.All(p2 => p2.Id != p.Id));
