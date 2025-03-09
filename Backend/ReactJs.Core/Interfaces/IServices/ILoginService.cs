@@ -11,6 +11,6 @@ namespace ReactJs.Core.Interfaces.IServices
     {
         Task<LoginResponse> Login(LoginRequest model, CancellationToken cancellationToken);
 
-        Task<LoginResponce> SignInAsync(LoginRequest model, CancellationToken cancellationToken);
+        Task<LoginResponse> SignInAsync(LoginRequest model, CancellationToken cancellationToken);
     }
 }

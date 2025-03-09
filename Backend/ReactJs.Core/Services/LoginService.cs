@@ -46,7 +46,7 @@ namespace ReactJs.Core.Services
             return null;
         }
 
-        public async Task<LoginResponce> SignInAsync(LoginRequest model, CancellationToken cancellationToken)
+        public async Task<LoginResponse> SignInAsync(LoginRequest model, CancellationToken cancellationToken)
         {
             var employee = await _employeeRepository.Login(model, cancellationToken);
             var login = _employeeModelMapper.MapModel(employee);
