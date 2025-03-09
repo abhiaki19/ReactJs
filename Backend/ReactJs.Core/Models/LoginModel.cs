@@ -13,7 +13,7 @@ namespace ReactJs.Core.Models
         public string Username { get; set; }
     }
 
-    public class LoginResponce 
+    public class LoginResponse 
     {
         public int Id { get; set; }
         public string LastName { get; set; }

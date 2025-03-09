@@ -46,7 +46,7 @@ namespace ReactJs.Infrastructure.Repositories
             return entities;
         }
 
-        public virtual async Task<PaginatedDataResponce<T>> GetPaginatedData(int pageNumber, int pageSize, CancellationToken cancellationToken = default)
+        public virtual async Task<PaginatedDataResponse<T>> GetPaginatedData(int pageNumber, int pageSize, CancellationToken cancellationToken = default)
         {
             var query = _dbContext.Set<T>()
                 .Skip((pageNumber - 1) * pageSize)
@@ -56,10 +56,10 @@ namespace ReactJs.Infrastructure.Repositories
             var data = await query.ToListAsync(cancellationToken);
             var totalCount = await _dbContext.Set<T>().CountAsync(cancellationToken);
 
-            return new PaginatedDataResponce<T>(data, totalCount);
+            return new PaginatedDataResponse<T>(data, totalCount);
         }
 
-        public async Task<PaginatedDataResponce<T>> GetPaginatedData(int pageNumber, int pageSize, List<ExpressionFilter> filters, CancellationToken cancellationToken = default)
+        public async Task<PaginatedDataResponse<T>> GetPaginatedData(int pageNumber, int pageSize, List<ExpressionFilter> filters, CancellationToken cancellationToken = default)
         {
             var query = _dbContext.Set<T>().AsNoTracking();
 
@@ -78,10 +78,10 @@ namespace ReactJs.Infrastructure.Repositories
 
             var totalCount = await query.CountAsync(cancellationToken);
 
-            return new PaginatedDataResponce<T>(data, totalCount);
+            return new PaginatedDataResponse<T>(data, totalCount);
         }
 
-        public virtual async Task<PaginatedDataResponce<T>> GetPaginatedData(List<Expression<Func<T, object>>> includeExpressions, int pageNumber, int pageSize, CancellationToken cancellationToken = default)
+        public virtual async Task<PaginatedDataResponse<T>> GetPaginatedData(List<Expression<Func<T, object>>> includeExpressions, int pageNumber, int pageSize, CancellationToken cancellationToken = default)
         {
             var query = _dbContext.Set<T>()
                 .Skip((pageNumber - 1) * pageSize)
@@ -96,10 +96,10 @@ namespace ReactJs.Infrastructure.Repositories
             var data = await query.AsNoTracking().ToListAsync(cancellationToken);
             var totalCount = await _dbContext.Set<T>().CountAsync(cancellationToken);
 
-            return new PaginatedDataResponce<T>(data, totalCount);
+            return new PaginatedDataResponse<T>(data, totalCount);
         }
 
-        public async Task<PaginatedDataResponce<T>> GetPaginatedData(int pageNumber, int pageSize, List<ExpressionFilter> filters, string sortBy, string sortOrder, CancellationToken cancellationToken = default)
+        public async Task<PaginatedDataResponse<T>> GetPaginatedData(int pageNumber, int pageSize, List<ExpressionFilter> filters, string sortBy, string sortOrder, CancellationToken cancellationToken = default)
         {
             var query = _dbContext.Set<T>().AsNoTracking();
 
@@ -125,7 +125,7 @@ namespace ReactJs.Infrastructure.Repositories
 
             var totalCount = await query.CountAsync(cancellationToken);
 
-            return new PaginatedDataResponce<T>(data, totalCount);
+            return new PaginatedDataResponse<T>(data, totalCount);
         }
 
         private Expression<Func<T, object>> GetOrderByExpression<T>(string propertyName)

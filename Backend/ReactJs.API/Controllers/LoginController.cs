@@ -38,7 +38,7 @@ namespace ReactJs.API.Controllers
                     var res = await _loginService.Login(model, cancellationToken);
                     if (res != null)
                     {
-                        var response = new ResponseModel<LoginResponce>
+                        var response = new ResponseModel<LoginResponse>
                         {
                             Success = true,
                             Message = "employee login successfully",
@@ -48,7 +48,7 @@ namespace ReactJs.API.Controllers
                     }
                     else
                     {
-                        var response = new ResponseModel<LoginResponce>
+                        var response = new ResponseModel<LoginResponse>
                         {
                             Success = false,
                             Message = "Username and Password are incorrect. please try again!",

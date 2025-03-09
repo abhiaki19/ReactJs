@@ -11,15 +11,15 @@ using System.Threading.Tasks;
 
 namespace ReactJs.Core.Services
 {
-    public class EmployeeService : BaseService<Employee, EmployeeResponce>, IEmployeeService
+    public class EmployeeService : BaseService<Employee, EmployeeResponse>, IEmployeeService
     {
-        private readonly IBaseMapper<Employee, EmployeeResponce> _employeeModelMapper;
+        private readonly IBaseMapper<Employee, EmployeeResponse> _employeeModelMapper;
         private readonly IBaseMapper<EmployeeRequest, Employee> _employeeCreateMapper;
         private readonly IBaseMapper<EmployeeRequest, Employee> _employeeUpdateMapper;
         private readonly IEmployeeRepository _employeeRepository;
 
         public EmployeeService(
-            IBaseMapper<Employee, EmployeeResponce> employeeModelMapper,
+            IBaseMapper<Employee, EmployeeResponse> employeeModelMapper,
             IBaseMapper<EmployeeRequest, Employee> employeeCreateMapper,
             IBaseMapper<EmployeeRequest, Employee> employeeUpdateMapper,
             IEmployeeRepository employeeRepository)
@@ -31,7 +31,7 @@ namespace ReactJs.Core.Services
             _employeeRepository = employeeRepository;
         }
 
-        public async Task<EmployeeResponce> Create(EmployeeRequest model, CancellationToken cancellationToken)
+        public async Task<EmployeeResponse> Create(EmployeeRequest model, CancellationToken cancellationToken)
         {
             //Mapping through AutoMapper
             var entity = _employeeCreateMapper.MapModel(model);

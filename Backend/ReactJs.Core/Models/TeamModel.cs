@@ -14,7 +14,7 @@ namespace ReactJs.Core.Models
         public bool IsActive { get; set; }
     }
 
-    public class TeamResponce : BaseModel<int>
+    public class TeamResponse : BaseModel<int>
     {
         public string TeamName { get; set; }
         public string? Description { get; set; }

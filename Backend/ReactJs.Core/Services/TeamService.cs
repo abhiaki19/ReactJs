@@ -11,15 +11,15 @@ using System.Threading.Tasks;
 
 namespace ReactJs.Core.Services
 {
-    public class TeamService : BaseService<Team, TeamResponce>, ITeamService
+    public class TeamService : BaseService<Team, TeamResponse>, ITeamService
     {
-        private readonly IBaseMapper<Team, TeamResponce> _TeamModelMapper;
+        private readonly IBaseMapper<Team, TeamResponse> _TeamModelMapper;
         private readonly IBaseMapper<TeamRequest, Team> _TeamCreateMapper;
         private readonly IBaseMapper<TeamRequest, Team> _TeamUpdateMapper;
         private readonly ITeamRepository _TeamRepository;
 
         public TeamService(
-            IBaseMapper<Team, TeamResponce> TeamModelMapper,
+            IBaseMapper<Team, TeamResponse> TeamModelMapper,
             IBaseMapper<TeamRequest, Team> TeamCreateMapper,
             IBaseMapper<TeamRequest, Team> TeamUpdateMapper,
             ITeamRepository TeamRepository)
@@ -31,7 +31,7 @@ namespace ReactJs.Core.Services
             _TeamRepository = TeamRepository;
         }
 
-        public async Task<TeamResponce> Create(TeamRequest model, CancellationToken cancellationToken)
+        public async Task<TeamResponse> Create(TeamRequest model, CancellationToken cancellationToken)
         {
             //Mapping through AutoMapper
             var entity = _TeamCreateMapper.MapModel(model);

@@ -11,15 +11,15 @@ using System.Threading.Tasks;
 
 namespace ReactJs.Core.Services
 {
-    public class LoginService : BaseService<Employee, LoginResponce>, ILoginService
+    public class LoginService : BaseService<Employee, LoginResponse>, ILoginService
     {
-        private readonly IBaseMapper<Employee, LoginResponce> _employeeModelMapper;
+        private readonly IBaseMapper<Employee, LoginResponse> _employeeModelMapper;
         private readonly IBaseMapper<LoginRequest, Employee> _employeeCreateMapper;
         private readonly IBaseMapper<LoginRequest, Employee> _employeeUpdateMapper;
         private readonly IEmployeeRepository _employeeRepository;
 
         public LoginService(
-            IBaseMapper<Employee, LoginResponce> employeeModelMapper,
+            IBaseMapper<Employee, LoginResponse> employeeModelMapper,
             IBaseMapper<LoginRequest, Employee> employeeCreateMapper,
             IBaseMapper<LoginRequest, Employee> employeeUpdateMapper,
             IEmployeeRepository employeeRepository)
@@ -31,7 +31,7 @@ namespace ReactJs.Core.Services
             _employeeRepository = employeeRepository;
         }
 
-        public async Task<LoginResponce> Login(LoginRequest model, CancellationToken cancellationToken)
+        public async Task<LoginResponse> Login(LoginRequest model, CancellationToken cancellationToken)
         {
             var employee = await _employeeRepository.Login(model, cancellationToken);
             var login = _employeeModelMapper.MapModel(employee);

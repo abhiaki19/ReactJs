@@ -31,7 +31,7 @@ namespace ReactJs.API.Controllers
             {
                 var lstEmployee = await _employeeService.GetAll(cancellationToken);
 
-                var response = new ResponseModel<IEnumerable<EmployeeResponce>>
+                var response = new ResponseModel<IEnumerable<EmployeeResponse>>
                 {
                     Success = true,
                     Message = "employees retrieved successfully",
@@ -65,10 +65,10 @@ namespace ReactJs.API.Controllers
         {
             try
             {
-                var employee = new EmployeeResponce();
+                var employee = new EmployeeResponse();
 
                 // Attempt to retrieve the employee from the cache
-                if (_memoryCache.TryGetValue($"employee_{id}", out EmployeeResponce cachedEmployee))
+                if (_memoryCache.TryGetValue($"employee_{id}", out EmployeeResponse cachedEmployee))
                 {
                     employee = cachedEmployee;
                 }
@@ -84,7 +84,7 @@ namespace ReactJs.API.Controllers
                     }
                 }
 
-                var response = new ResponseModel<EmployeeResponce>
+                var response = new ResponseModel<EmployeeResponse>
                 {
                     Success = true,
                     Message = "employee retrieved successfully",
@@ -152,7 +152,7 @@ namespace ReactJs.API.Controllers
                 {
                     var data = await _employeeService.Create(model, cancellationToken);
 
-                    var response = new ResponseModel<EmployeeResponce>
+                    var response = new ResponseModel<EmployeeResponse>
                     {
                         Success = true,
                         Message = "employee created successfully",

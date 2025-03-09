@@ -31,27 +31,27 @@ namespace ReactJs.Core.Services
             return _viewModelMapper.MapList(await _repository.GetAll(cancellationToken));
         }
 
-        public virtual async Task<PaginatedDataResponce<TModel>> GetPaginatedData(int pageNumber, int pageSize, CancellationToken cancellationToken)
+        public virtual async Task<PaginatedDataResponse<TModel>> GetPaginatedData(int pageNumber, int pageSize, CancellationToken cancellationToken)
         {
             var paginatedData = await _repository.GetPaginatedData(pageNumber, pageSize, cancellationToken);
             var mappedData = _viewModelMapper.MapList(paginatedData.Data);
-            var paginatedDataViewModel = new PaginatedDataResponce<TModel>(mappedData.ToList(), paginatedData.TotalCount);
+            var paginatedDataViewModel = new PaginatedDataResponse<TModel>(mappedData.ToList(), paginatedData.TotalCount);
             return paginatedDataViewModel;
         }
 
-        public virtual async Task<PaginatedDataResponce<TModel>> GetPaginatedData(int pageNumber, int pageSize, List<ExpressionFilter> filters, CancellationToken cancellationToken)
+        public virtual async Task<PaginatedDataResponse<TModel>> GetPaginatedData(int pageNumber, int pageSize, List<ExpressionFilter> filters, CancellationToken cancellationToken)
         {
             var paginatedData = await _repository.GetPaginatedData(pageNumber, pageSize, filters, cancellationToken);
             var mappedData = _viewModelMapper.MapList(paginatedData.Data);
-            var paginatedDataViewModel = new PaginatedDataResponce<TModel>(mappedData.ToList(), paginatedData.TotalCount);
+            var paginatedDataViewModel = new PaginatedDataResponse<TModel>(mappedData.ToList(), paginatedData.TotalCount);
             return paginatedDataViewModel;
         }
 
-        public virtual async Task<PaginatedDataResponce<TModel>> GetPaginatedData(int pageNumber, int pageSize, List<ExpressionFilter> filters, string sortBy, string sortOrder, CancellationToken cancellationToken)
+        public virtual async Task<PaginatedDataResponse<TModel>> GetPaginatedData(int pageNumber, int pageSize, List<ExpressionFilter> filters, string sortBy, string sortOrder, CancellationToken cancellationToken)
         {
             var paginatedData = await _repository.GetPaginatedData(pageNumber, pageSize, filters, sortBy, sortOrder, cancellationToken);
             var mappedData = _viewModelMapper.MapList(paginatedData.Data);
-            var paginatedDataViewModel = new PaginatedDataResponce<TModel>(mappedData.ToList(), paginatedData.TotalCount);
+            var paginatedDataViewModel = new PaginatedDataResponse<TModel>(mappedData.ToList(), paginatedData.TotalCount);
             return paginatedDataViewModel;
         }
 

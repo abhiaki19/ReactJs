@@ -31,7 +31,7 @@ namespace ReactJs.API.Controllers
             {
                 var lstTeam = await _TeamService.GetAll(cancellationToken);
 
-                var response = new ResponseModel<IEnumerable<TeamResponce>>
+                var response = new ResponseModel<IEnumerable<TeamResponse>>
                 {
                     Success = true,
                     Message = "Teams retrieved successfully",
@@ -65,10 +65,10 @@ namespace ReactJs.API.Controllers
         {
             try
             {
-                var Team = new TeamResponce();
+                var Team = new TeamResponse();
 
                 // Attempt to retrieve the Team from the cache
-                if (_memoryCache.TryGetValue($"Team_{id}", out TeamResponce cachedTeam))
+                if (_memoryCache.TryGetValue($"Team_{id}", out TeamResponse cachedTeam))
                 {
                     Team = cachedTeam;
                 }
@@ -84,7 +84,7 @@ namespace ReactJs.API.Controllers
                     }
                 }
 
-                var response = new ResponseModel<TeamResponce>
+                var response = new ResponseModel<TeamResponse>
                 {
                     Success = true,
                     Message = "Team retrieved successfully",
@@ -152,7 +152,7 @@ namespace ReactJs.API.Controllers
                 {
                     var data = await _TeamService.Create(model, cancellationToken);
 
-                    var response = new ResponseModel<TeamResponce>
+                    var response = new ResponseModel<TeamResponse>
                     {
                         Success = true,
                         Message = "Team created successfully",
@@ -244,7 +244,17 @@ namespace ReactJs.API.Controllers
                             }
                         }
                     }
+                    // Delete object from database
+                    var lst = await _TeamService.GetAll(cancellationToken);
+                    if (lst!=null&&lst.Count() > 0)
+                    {
+                        var result = lst?.Where(p => model.All(p2 => p2.Id != p.Id));
 
+                        foreach (var item in result)
+                        {
+                            await _TeamService.Delete(item.Id, cancellationToken);
+                        }
+                    }
                     // Remove data from cache by key
                     //_memoryCache.Remove($"Team_{model.Id}");
 

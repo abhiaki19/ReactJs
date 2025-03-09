@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace ReactJs.Core.Interfaces.IServices
 {
-    public interface IEmployeeService : IBaseService<EmployeeResponce>
+    public interface IEmployeeService : IBaseService<EmployeeResponse>
     {
-        Task<EmployeeResponce> Create(EmployeeRequest model, CancellationToken cancellationToken);
+        Task<EmployeeResponse> Create(EmployeeRequest model, CancellationToken cancellationToken);
         Task Update(EmployeeRequest model, CancellationToken cancellationToken);
         Task Delete(int id, CancellationToken cancellationToken);
     }

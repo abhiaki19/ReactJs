@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace ReactJs.Core.Interfaces.IServices
 {
-    public interface ILoginService : IBaseService<LoginResponce>
+    public interface ILoginService : IBaseService<LoginResponse>
     {
-        Task<LoginResponce> Login(LoginRequest model, CancellationToken cancellationToken);
+        Task<LoginResponse> Login(LoginRequest model, CancellationToken cancellationToken);
     }
 }
