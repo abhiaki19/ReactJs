@@ -24,7 +24,6 @@ axiosInstance.interceptors.request.use(
   );
 
 function Api(apiName) { 
-    debugger
 return {
     
             fetchAll: () => axiosInstance.get(apiName),

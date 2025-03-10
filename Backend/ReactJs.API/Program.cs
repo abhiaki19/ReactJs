@@ -34,19 +34,19 @@ builder.Services.AddLogging(loggingBuilder =>
     loggingBuilder.AddSeq(builder.Configuration.GetSection("SeqConfig"));
 });
 
-builder.Services.AddJwtAuthentication();
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+
+builder.Services.AddJwtAuthentication();
+builder.Services.AddSwagger();
+//builder.Services.AddSwaggerGen();
 
 builder.Services.RegisterService();
 builder.Services.RegisterMapperService();
 
-
-
-//builder.Services.AddSwagger();
 
 //Cors Policy
 // Configure CORS policy to allow requests from the client application

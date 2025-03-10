@@ -29,6 +29,10 @@ public class JwtBearerOptionsSetup : IPostConfigureOptions<JwtBearerOptions>
     /// </remarks>
     public void PostConfigure(string? name, JwtBearerOptions options)
     {
+        options.TokenValidationParameters.ValidateIssuer = true;
+        options.TokenValidationParameters.ValidateAudience = true;
+        options.TokenValidationParameters.ValidateLifetime = true;
+        options.TokenValidationParameters.ValidateIssuerSigningKey = true;
         options.TokenValidationParameters.ValidIssuer = _jwtOptions.Issuer;
         options.TokenValidationParameters.ValidAudience = _jwtOptions.Audience;
         options.TokenValidationParameters.IssuerSigningKey =

@@ -24,9 +24,7 @@ namespace ReactJs.API.Controllers
             _employeeService = employeeService;
             _memoryCache = memoryCache;
         }
-        [HttpGet]
-        [AllowAnonymous]
-        [Authorize]
+        [HttpGet] 
         public async Task<IActionResult> Get(CancellationToken cancellationToken)
         {
             try
@@ -62,7 +60,6 @@ namespace ReactJs.API.Controllers
         }
 
         [HttpGet("{id}")]
-        [AllowAnonymous]
         public async Task<IActionResult> Get(int id, CancellationToken cancellationToken)
         {
             try
@@ -194,7 +191,6 @@ namespace ReactJs.API.Controllers
         }
 
         [HttpPut]
-        [AllowAnonymous]
         public async Task<IActionResult> Edit(EmployeeRequest model, CancellationToken cancellationToken)
         {
             if (ModelState.IsValid)
