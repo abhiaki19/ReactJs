@@ -34,6 +34,7 @@ builder.Services.AddLogging(loggingBuilder =>
     loggingBuilder.AddSeq(builder.Configuration.GetSection("SeqConfig"));
 });
 
+builder.Services.AddJwtAuthentication();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -43,7 +44,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.RegisterService();
 builder.Services.RegisterMapperService();
 
-builder.Services.AddJwtAuthentication();
+
 
 //builder.Services.AddSwagger();
 
@@ -90,6 +91,7 @@ app.UseMiddleware<RequestResponseLoggingMiddleware>();
 #endregion
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

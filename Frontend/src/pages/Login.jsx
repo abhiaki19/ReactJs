@@ -20,6 +20,7 @@ const {login} = useContext(AuthContext);
             if (res.status === 200 && res.data != null) {
                  
                 if (res.data.success) {
+                  localStorage.setItem('userData', JSON.stringify(res.data.data))
                   login({username: username});
                   navigate(
                     location.state ||

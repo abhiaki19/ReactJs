@@ -12,6 +12,7 @@ namespace ReactJs.API.Controllers
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
+    [Authorize]
     public class EmployeeController : Controller
     {
         private readonly ILogger<EmployeeController> _logger;
@@ -25,6 +26,7 @@ namespace ReactJs.API.Controllers
         }
         [HttpGet]
         [AllowAnonymous]
+        [Authorize]
         public async Task<IActionResult> Get(CancellationToken cancellationToken)
         {
             try

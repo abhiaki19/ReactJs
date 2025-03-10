@@ -116,7 +116,8 @@ namespace ReactJs.API.Controllers
                         var response = new ResponseModel<LoginResponse>
                         {
                             Success = false,
-                            Message = "Username and Password are incorrect. please try again!" 
+                            Message = "Username and Password are incorrect. please try again!",
+                            Data = res
                         };
                         return Ok(response);
                     }
