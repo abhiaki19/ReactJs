@@ -3,6 +3,7 @@ using ReactJs.Core.Interfaces.IMapper;
 using ReactJs.Core.Interfaces.IRepositories;
 using ReactJs.Core.Interfaces.IServices;
 using ReactJs.Core.Models;
+using ReactJs.API.Authentication;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,18 +18,21 @@ namespace ReactJs.Core.Services
         private readonly IBaseMapper<LoginRequest, Employee> _employeeCreateMapper;
         private readonly IBaseMapper<LoginRequest, Employee> _employeeUpdateMapper;
         private readonly IEmployeeRepository _employeeRepository;
+        private readonly IJwtProvider _jwtProvider;
 
         public LoginService(
             IBaseMapper<Employee, LoginResponse> employeeModelMapper,
             IBaseMapper<LoginRequest, Employee> employeeCreateMapper,
             IBaseMapper<LoginRequest, Employee> employeeUpdateMapper,
-            IEmployeeRepository employeeRepository)
+            IEmployeeRepository employeeRepository,
+            IJwtProvider jwtProvider)
             : base(employeeModelMapper, employeeRepository)
         {
             _employeeCreateMapper = employeeCreateMapper;
             _employeeUpdateMapper = employeeUpdateMapper;
             _employeeModelMapper = employeeModelMapper;
             _employeeRepository = employeeRepository;
+            _jwtProvider = jwtProvider;
         }
 
         public async Task<LoginResponse> Login(LoginRequest model, CancellationToken cancellationToken)
@@ -41,6 +45,25 @@ namespace ReactJs.Core.Services
             }
             return null;
         }
-         
+
+        public async Task<LoginResponse> SignInAsync(LoginRequest model, CancellationToken cancellationToken)
+        {
+            var employee = await _employeeRepository.Login(model, cancellationToken);
+            var login = _employeeModelMapper.MapModel(employee);
+
+            if (login is null)
+            {
+                throw new Exception($"Customer with id: '{model.Username}' was not found.");
+            }
+
+            if (login.Username == model.Username && employee.Password != model.Password)
+            {
+                throw new Exception($"Username or Password incorrect.");
+            }
+
+            login.Token = _jwtProvider.Generate(model.Username, model.Password);
+            return login;
+        }
+
     }
 }

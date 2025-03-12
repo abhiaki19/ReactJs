@@ -1,18 +1,36 @@
 import axios from "axios"
 import config from "../conf/Config"
 
-const baseUrl = config.apiUrl;
 
+const axiosInstance = axios.create({
+    baseURL: config.apiUrl, // Replace with your API base URL
+  });
+
+//const baseUrl = config.apiUrl;
+
+
+axiosInstance.interceptors.request.use(
+    (config) => {
+      const userData = localStorage.getItem('userData');
+      if (userData) {
+        const token = JSON.parse(userData).token;
+        config.headers['Authorization'] = `Bearer ${token}`;
+      }
+      return config;
+    },
+    (error) => {
+      return Promise.reject(error);
+    }
+  );
 
 function Api(apiName) { 
-    debugger
 return {
     
-            fetchAll: () => axios.get(baseUrl + apiName),
-            fetchById: id => axios.get(baseUrl + apiName + id),
-            post: newRecord => axios.post(baseUrl + apiName, newRecord),
-            put: (updateRecord) => axios.put(baseUrl + apiName , updateRecord),
-            delete: id => axios.delete(baseUrl + apiName + id)
+            fetchAll: () => axiosInstance.get(apiName),
+            fetchById: id => axiosInstance.get(apiName + id),
+            post: newRecord => axiosInstance.post(apiName, newRecord),
+            put: (updateRecord) => axiosInstance.put(apiName , updateRecord),
+            delete: id => axiosInstance.delete(apiName + id)
         }
     
 }

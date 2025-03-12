@@ -12,6 +12,7 @@ namespace ReactJs.API.Controllers
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
+    [Authorize]
     public class EmployeeController : Controller
     {
         private readonly ILogger<EmployeeController> _logger;
@@ -23,8 +24,7 @@ namespace ReactJs.API.Controllers
             _employeeService = employeeService;
             _memoryCache = memoryCache;
         }
-        [HttpGet]
-        [AllowAnonymous]
+        [HttpGet] 
         public async Task<IActionResult> Get(CancellationToken cancellationToken)
         {
             try
@@ -60,7 +60,6 @@ namespace ReactJs.API.Controllers
         }
 
         [HttpGet("{id}")]
-        [AllowAnonymous]
         public async Task<IActionResult> Get(int id, CancellationToken cancellationToken)
         {
             try
@@ -192,7 +191,6 @@ namespace ReactJs.API.Controllers
         }
 
         [HttpPut]
-        [AllowAnonymous]
         public async Task<IActionResult> Edit(EmployeeRequest model, CancellationToken cancellationToken)
         {
             if (ModelState.IsValid)
