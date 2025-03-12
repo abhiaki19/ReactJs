@@ -2,6 +2,8 @@ import { use, useContext,useState } from "react";
 import { AuthContext } from "../context/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
 import LoginService from "../services/LoginService";
+import Button from "../components/Button";
+import Input from "../components/Input";
 
 function Login() {
 
@@ -60,24 +62,27 @@ const {login} = useContext(AuthContext);
                           />
                 </div>
                 <div className="mb-4">
-                    <label className="block font-semibold text-gray-700 mb-2" for="password">
+                  <Input label="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                    {/* <label className="block font-semibold text-gray-700 mb-2" for="password">
                         Password
                     </label>
                     <input
                         className="border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                         id="password" type="password" placeholder="Enter your password"
                         value={password}
-                        onChange={(e) => setPassword(e.target.value)} />
+                        onChange={(e) => setPassword(e.target.value)} /> */}
                     <a className="text-gray-600 hover:text-gray-800" href="#">Forgot your password?</a>
                 </div>
                 <div className="mb-6">
-                    <button
+                  <Button onClick={handleLoginClick}>Login</Button>
+                    <a className="text-blue-500 hover:text-blue-800" href="#">Don't have an account?</a>
+                    {/* <button
                         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                         type="button"
                         onClick={() => handleLoginClick()}
                         >
                         Login
-                    </button>
+                    </button> */}
                 </div>
             </form>
       </div>
