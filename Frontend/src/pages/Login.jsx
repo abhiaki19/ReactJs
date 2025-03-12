@@ -19,9 +19,8 @@ const {login} = useContext(AuthContext);
           LoginService().Login({Username:username,Password:password}).then(res => {
             if (res.status === 200 && res.data != null) {
                  
-                if (res.data.success) {
-                  localStorage.setItem('userData', JSON.stringify(res.data.data))
-                  login({username: username});
+                if (res.data.success) { 
+                  login(res.data.data);
                   navigate(
                     location.state ||
                       `/home`,
@@ -31,7 +30,14 @@ const {login} = useContext(AuthContext);
                   setError(res.data.message);
             }
           }
-        }, err => console.log(err.response.data.error.message)); 
+        }, err => {
+          if(err.response && err.response.data){
+          console.log(err.response.data.error.message)
+          }
+          else{
+            console.log(err.response)
+          }
+        }); 
     } else {
             setError('Invalid username or password');
         }

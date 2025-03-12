@@ -23,7 +23,14 @@ function Home() {
             if (res.status === 200 && res.data.data != null) {
                 setLstEmployee(res.data.data);
             }
-        }, err => console.log(err.response.data.error.message));
+        }, err => {
+            if(err.response && err.response.data){
+            console.log(err.response.data.error.message)
+            }
+            else{
+              console.log(err.response)
+            }
+          }); 
     }
 
     const save = () => {
