@@ -58,7 +58,9 @@ const {login} = useContext(AuthContext);
   </div>
 </div>
                 <div className="mb-4">
-                    <label className="block font-semibold text-gray-700 mb-2" for="email">
+                <Input label="Username: " placeholder="Enter your Username" required value={username} onChange={(e) => setUsername(e.target.value)} /> 
+
+                    {/* <label className="block font-semibold text-gray-700 mb-2" for="email">
                         Email Address
                     </label>
                     <input
@@ -66,10 +68,10 @@ const {login} = useContext(AuthContext);
                         id="username" type="text" placeholder="Enter your Username"
                         value={username}
                           onChange={(e) => setUsername(e.target.value)}
-                          />
+                          /> */}
                 </div>
                 <div className="mb-4">
-                  <Input label="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                  <Input label="Password: " placeholder="Enter your Password" required type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                     {/* <label className="block font-semibold text-gray-700 mb-2" for="password">
                         Password
                     </label>

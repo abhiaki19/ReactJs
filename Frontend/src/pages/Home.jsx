@@ -195,6 +195,9 @@ function Home() {
                                         checked={isActive}
                                         onChange={() => { setIsActive((prev) => !prev) }}
                                     />
+
+                                    {/* <Select value={isActive} onChange={(e) => setIsActive(e.target.value)}
+                                    options={['true', 'false']} />  */}
                                 </div>
                             </div>
                         </div>
